@@ -14,7 +14,7 @@ interface MouseEvent {
             'click',
             ({ target }) => {
                 if (!target?.classList.contains('content')) return;
-                while (target.firstElementChild) target.firstElementChild.remove();
+                while (target.firstChild) target.firstChild.remove();
                 target.append(makeReplacement());
             },
             { once: true }
@@ -33,7 +33,7 @@ interface MouseEvent {
 
     d.addEventListener('click', (event) => {
         const { target } = event;
-        if (!target || target.id !== 'footer-logo') return;
+        if (!target || !target.matches('img[src*=logo]')) return;
         event.preventDefault();
         return initRemoving();
     });
