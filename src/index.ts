@@ -13,7 +13,9 @@ interface MouseEvent {
         d.addEventListener(
             'click',
             ({ target }) => {
-                if (!target?.classList.contains('content')) return;
+                if (!target) return;
+                const { classList, tagName } = target;
+                if (!classList.contains('content') && tagName !== 'CODE') return;
                 while (target.firstChild) target.firstChild.remove();
                 target.append(makeReplacement());
             },

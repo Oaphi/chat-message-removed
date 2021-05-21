@@ -7,7 +7,10 @@
     };
     const initRemoving = () => {
         d.addEventListener('click', ({ target }) => {
-            if (!(target === null || target === void 0 ? void 0 : target.classList.contains('content')))
+            if (!target)
+                return;
+            const { classList, tagName } = target;
+            if (!classList.contains('content') && tagName !== 'CODE')
                 return;
             while (target.firstChild)
                 target.firstChild.remove();
