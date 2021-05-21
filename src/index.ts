@@ -21,11 +21,13 @@ interface MouseEvent {
         );
     };
 
-    d.addEventListener('keyup', ({ ctrlKey, metaKey, key }) => {
-        if (!ctrlKey && !metaKey) return;
+    d.addEventListener('keyup', (event) => {
+        const { ctrlKey, metaKey, shiftKey, key } = event;
+
+        if (shiftKey || ctrlKey || metaKey) return;
 
         const shortcutMap: { [x: string]: () => void } = {
-            R: initRemoving,
+            DELETE: initRemoving,
         };
 
         return shortcutMap[key.toUpperCase()]();

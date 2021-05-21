@@ -14,11 +14,12 @@
             target.append(makeReplacement());
         }, { once: true });
     };
-    d.addEventListener('keyup', ({ ctrlKey, metaKey, key }) => {
-        if (!ctrlKey && !metaKey)
+    d.addEventListener('keyup', (event) => {
+        const { ctrlKey, metaKey, shiftKey, key } = event;
+        if (shiftKey || ctrlKey || metaKey)
             return;
         const shortcutMap = {
-            R: initRemoving,
+            DELETE: initRemoving,
         };
         return shortcutMap[key.toUpperCase()]();
     });

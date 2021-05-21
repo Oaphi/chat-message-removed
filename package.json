@@ -4,7 +4,7 @@
   "description": "template repository for userscripters' projects",
   "scripts": {
     "lint": "eslint src --fix --ext .js,.ts",
-    "build": "tsc"
+    "build": "npm run lint && tsc"
   },
   "repository": {
     "type": "git",
