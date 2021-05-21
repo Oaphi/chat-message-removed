@@ -24,7 +24,8 @@
         const shortcutMap = {
             DELETE: initRemoving,
         };
-        return shortcutMap[key.toUpperCase()]();
+        const handler = shortcutMap[key.toUpperCase()];
+        return handler && handler();
     });
     d.addEventListener('click', (event) => {
         const { target } = event;
